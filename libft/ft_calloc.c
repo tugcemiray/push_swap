@@ -1,44 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print2.c                                           :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tukaraca <tukaraca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/15 19:44:38 by tukaraca          #+#    #+#             */
-/*   Updated: 2025/04/15 19:44:42 by tukaraca         ###   ########.fr       */
+/*   Created: 2024/11/08 15:01:18 by tukaraca          #+#    #+#             */
+/*   Updated: 2024/11/08 15:07:28 by tukaraca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	sa(t_stack **stack_a)
+void	*ft_calloc(size_t count, size_t size)
 {
-	swap(stack_a);
-	write(1, "sa\n", 3);
-}
+	void	*ptr;
 
-void	sb(t_stack **stack_b)
-{
-	swap(stack_b);
-	write(1, "sb\n", 3);
-}
-
-void	ss(t_stack **stack_a, t_stack **stack_b)
-{
-	swap(stack_a);
-	swap(stack_b);
-	write(1, "ss\n", 3);
-}
-
-void	ra(t_stack	**stack_a)
-{
-	rotate(stack_a);
-	write(1, "ra\n", 3);
-}
-
-void	rb(t_stack	**stack_b)
-{
-	rotate(stack_b);
-	write(1, "rb\n", 3);
+	ptr = malloc(count * size);
+	if (ptr == NULL)
+		return (NULL);
+	ft_bzero(ptr, count * size);
+	return (ptr);
 }

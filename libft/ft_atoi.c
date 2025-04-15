@@ -1,44 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print2.c                                           :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tukaraca <tukaraca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/15 19:44:38 by tukaraca          #+#    #+#             */
-/*   Updated: 2025/04/15 19:44:42 by tukaraca         ###   ########.fr       */
+/*   Created: 2024/10/18 15:34:18 by tukaraca          #+#    #+#             */
+/*   Updated: 2025/04/15 17:59:02 by tukaraca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-void	sa(t_stack **stack_a)
+int	ft_atoi(const char *str)
 {
-	swap(stack_a);
-	write(1, "sa\n", 3);
-}
+	int	i;
+	int	final;
+	int	sign;
 
-void	sb(t_stack **stack_b)
-{
-	swap(stack_b);
-	write(1, "sb\n", 3);
-}
-
-void	ss(t_stack **stack_a, t_stack **stack_b)
-{
-	swap(stack_a);
-	swap(stack_b);
-	write(1, "ss\n", 3);
-}
-
-void	ra(t_stack	**stack_a)
-{
-	rotate(stack_a);
-	write(1, "ra\n", 3);
-}
-
-void	rb(t_stack	**stack_b)
-{
-	rotate(stack_b);
-	write(1, "rb\n", 3);
+	i = 0;
+	final = 0;
+	sign = 1;
+	while ((*str >= 9 && *str <= 13) || *str == 32)
+		str++;
+	if (*str == '-')
+	{
+		sign = -1;
+		str++;
+	}
+	else if (*str == '+')
+		str++;
+	while (*str >= 48 && *str <= 57)
+	{
+		final *= 10;
+		final = final + (*str - 48);
+		str++;
+	}
+	return (final * sign);
 }

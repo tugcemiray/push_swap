@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   funcs2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tukaraca <tukaraca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/15 03:41:52 by ubuntu            #+#    #+#             */
-/*   Updated: 2025/04/15 03:41:52 by ubuntu           ###   ########.fr       */
+/*   Created: 2025/04/15 19:44:14 by tukaraca          #+#    #+#             */
+/*   Updated: 2025/04/15 19:47:09 by tukaraca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 
 int	is_space(char *str)
 {
+	if (!*str)
+		return (0);
 	while (*str)
 	{
-		if ((*str >= 9 && *str <= 13) || *str == 32)
+		if (!((*str >= 9 && *str <= 13) || *str == 32))
 			return (0);
 		str++;
 	}
@@ -30,11 +32,15 @@ int	is_same(char *input, char *check)
 
 	i = 0;
 	j = 0;
+	if (ft_atoi(input) == 0 && ft_atoi(check) == 0)
+		return (1);
+	if ((input[0] == '-' && check[0] != '-')
+		|| (input[0] != '-' && check[0] == '-'))
+		return (0);
 	if (input[i] == '-' || input[i] == '+')
-	{
 		i++;
+	if (check[j] == '-' || check[j] == '+')
 		j++;
-	}
 	while (input[i] == '0')
 		i++;
 	while (check[j] == '0')
@@ -44,9 +50,7 @@ int	is_same(char *input, char *check)
 		if (input[i++] != check[j++])
 			return (0);
 	}
-	if (input[i] == '\0' && check[j] == '\0')
-		return (1);
-	return (0);
+	return (input[i] == '\0' && check[j] == '\0');
 }
 
 static int	nbr_check(char *str, int num)
